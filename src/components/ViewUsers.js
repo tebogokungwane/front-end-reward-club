@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
+import AnimatedPage from "./AnimatedPage";
+
 
 const ViewUsers = () => {
   const [users, setUsers] = useState([]);
@@ -119,6 +121,8 @@ const ViewUsers = () => {
   };
 
   return (
+    <AnimatedPage>
+
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
       <div style={{ width: '100%', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', overflowX: 'auto' }}>
         <div style={{ marginBottom: '10px' }}>
@@ -311,6 +315,8 @@ const ViewUsers = () => {
         </div>
       )}
     </div>
+    </AnimatedPage>
+
   );
 }
 

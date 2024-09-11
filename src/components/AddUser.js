@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Card } from 'react-bootstrap';
+import AnimatedPage from "./AnimatedPage";
+
 
 import {
   MDBInput,
@@ -123,6 +124,8 @@ const AddUser = () => {
 
   return (
 
+    <AnimatedPage>
+
     <div className="login-container" style={{ backgroundColor: '#f0f0f0' }}>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
         <MDBCard className='p-4 shadow'>
@@ -228,6 +231,8 @@ const AddUser = () => {
         </MDBCard>
       </div>
     </div>
+    </AnimatedPage>
+
   );
 }
 

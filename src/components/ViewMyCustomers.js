@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
-import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import {  MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import {  FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
 import { jwtDecode } from 'jwt-decode';
 import Rating from '@mui/material/Rating';
 import { Modal, Button } from 'react-bootstrap';
 import { FaEye } from 'react-icons/fa';
-
-
+import AnimatedPage from "./AnimatedPage";
 
 
 const ViewMyCustomers = () => {
@@ -141,6 +140,8 @@ const ViewMyCustomers = () => {
   };
 
   return (
+    <AnimatedPage>
+
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
       <div style={{ width: '100%', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', overflowX: 'auto' }}>
         <div style={{ marginBottom: '10px' }}>
@@ -302,9 +303,9 @@ const ViewMyCustomers = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
-
     </div>
+    </AnimatedPage>
+
   );
 };
 

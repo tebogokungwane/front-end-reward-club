@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { Card } from 'react-bootstrap';
+import AnimatedPage from "./AnimatedPage";
+
 import {
   MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBInput
 } from 'mdb-react-ui-kit';
@@ -25,6 +27,8 @@ const AddAdmin = () => {
   };
 
   return (
+    <AnimatedPage>
+
     <MDBContainer fluid className='h-100'>
       <MDBRow className='d-flex justify-content-center align-items-center'>
         <MDBCol lg='8' xl='6'>
@@ -163,6 +167,8 @@ const AddAdmin = () => {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
+    </AnimatedPage>
+
   );
 }
 

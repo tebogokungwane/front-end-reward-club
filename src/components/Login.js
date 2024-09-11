@@ -4,6 +4,9 @@ import { MDBCard, MDBCardTitle, MDBCardBody, MDBContainer, MDBInput, MDBCheckbox
 import '../styles/Login.css';
 import { useAuth } from './AuthContext';
 import { jwtDecode } from 'jwt-decode'; // or import * as jwtDecode from 'jwt-decode';
+import AnimatedPage from "./AnimatedPage";
+
+
 
 function Login() {
   const [emailAddress, setEmailAddress] = useState('');
@@ -75,6 +78,8 @@ function Login() {
 
 
   return (
+    <AnimatedPage>
+
     <>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', marginTop: '-70px' }}>
         <MDBContainer className='d-flex vh-100 justify-content-center align-items-center'>
@@ -126,6 +131,8 @@ function Login() {
         </MDBContainer>
       </div>
     </>
+    </AnimatedPage>
+
   );
 }
 
