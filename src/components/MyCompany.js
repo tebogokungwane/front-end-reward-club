@@ -40,7 +40,8 @@ export default function User() {
 
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:1991/api/v1/profile/${userId}`, {
+
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/profile/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -57,7 +58,8 @@ export default function User() {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:1991/api/v1/users');
+
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/users`);
         setUsers(response.data.content);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -70,7 +72,8 @@ export default function User() {
 
   const handleUpdateSubmit = () => {
     axios
-      .put(`http://localhost:1991/api/v1/updateCustomer/${updateItem.id}`, {
+
+      .put( `${process.env.REACT_APP_API_URL}/api/v1/updateCustomer/${updateItem.id}`, {
         firstName: updateItem.firstName,
         lastName: updateItem.lastName,
         emailAddress: updateItem.emailAddress,

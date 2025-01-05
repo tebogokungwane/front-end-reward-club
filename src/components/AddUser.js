@@ -51,7 +51,8 @@ const AddUser = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:1991/api/v1/profile/${userId}`, {
+        
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/profile/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -97,7 +98,10 @@ const AddUser = () => {
     console.log('Request data:', finalFormData); // Log the request data
 
     try {
-      const response = await axios.post('http://localhost:1991/api/v1/signUpCustomer', finalFormData, {
+
+      
+
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/signUpCustomer`, finalFormData, {
         headers: {
           Authorization: `Bearer ${token}`
         }

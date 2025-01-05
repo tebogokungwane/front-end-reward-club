@@ -39,7 +39,8 @@ const ViewMyCustomers = () => {
 
   const fetchCustomers = () => {
     axios
-      .get(`http://localhost:1991/api/v1/company/customers?companyEmail=${companyEmail}`)
+
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/company/customers?companyEmail=${companyEmail}`)
       .then(response => {
         const customersData = response.data.content || response.data;
         setCustomers(customersData);
@@ -58,7 +59,8 @@ const ViewMyCustomers = () => {
   const confirmDelete = () => {
     if (deleteItemId) {
       axios
-        .delete(`http://localhost:1991/api/v1/deleteCustomer/${deleteItemId}`)
+
+        .delete(`${process.env.REACT_APP_API_URL}/api/v1/deleteCustomer/${deleteItemId}`)
         .then(() => {
           fetchCustomers();
           setDeleteItemId(null);
@@ -111,7 +113,8 @@ const ViewMyCustomers = () => {
       };
 
       axios
-        .put(`http://localhost:1991/api/v1/updateMyCustomersTargetRewardPoint/${selectedCustomer.id}`, updatedCustomer)
+
+        .put(`${process.env.REACT_APP_API_URL}/api/v1/updateMyCustomersTargetRewardPoint/${selectedCustomer.id}`, updatedCustomer)
         .then(() => {
           fetchCustomers();
           setShowConfirmModal(false);

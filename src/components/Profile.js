@@ -23,6 +23,7 @@ import ChatBox from './ChatBox';
 import User from './User';
 import About from './About';
 import ViewUsers from './ViewUsers';
+import MyCustomersByCompany from './MyCustomers';
 import AddUser from './AddUser';
 import AddAdmin from './AddAdmin';
 import MyCustomers from './ViewMyCustomers';
@@ -38,7 +39,11 @@ export default function ProfilePage() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`http://localhost:1991/api/v1/profile/${userId}`, {
+
+
+
+      const response = await fetch( `${process.env.REACT_APP_API_URL}/api/v1/profile/${userId}`
+        , {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -83,6 +88,8 @@ export default function ProfilePage() {
           </MDBNavbarToggler>
           <MDBCollapse navbar show={showNav}>
             <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+
+              
               <MDBNavbarItem>
                 <MDBNavbarLink
                   active={selectedSection === 'profile'}
@@ -93,18 +100,9 @@ export default function ProfilePage() {
                 </MDBNavbarLink>
               </MDBNavbarItem>
 
+
               {user?.role === 'ADMIN' && (
                 <>
-                  <MDBNavbarItem>
-                    <MDBNavbarLink
-                      active={selectedSection === 'ViewUsers'}
-                      onClick={() => handleNavigation('ViewUsers')}
-                      style={{ cursor: 'pointer', fontWeight: selectedSection === 'ViewUsers' ? 'bold' : 'normal' }}
-                    >
-                      Customers
-                    </MDBNavbarLink>
-                  </MDBNavbarItem>
-
                   <MDBNavbarItem>
                     <MDBNavbarLink
                       active={selectedSection === 'addUser'}
@@ -115,15 +113,8 @@ export default function ProfilePage() {
                     </MDBNavbarLink>
                   </MDBNavbarItem>
 
-                  <MDBNavbarItem>
-                    <MDBNavbarLink
-                      active={selectedSection === 'addAdmin'}
-                      onClick={() => handleNavigation('addAdmin')}
-                      style={{ cursor: 'pointer', fontWeight: selectedSection === 'addAdmin' ? 'bold' : 'normal' }}
-                    >
-                      Add Admin
-                    </MDBNavbarLink>
-                  </MDBNavbarItem>
+                  
+
 
                   <MDBNavbarItem>
                     <MDBNavbarLink
@@ -137,9 +128,45 @@ export default function ProfilePage() {
                 </>
               )}
 
+
+
+
+
+
+              {user?.role === 'MANAGEMENT' && (
+                <>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink
+                      active={selectedSection === 'ViewUsers'}
+                      onClick={() => handleNavigation('ViewUsers')}
+                      style={{ cursor: 'pointer', fontWeight: selectedSection === 'ViewUsers' ? 'bold' : 'normal' }}
+                    >
+                      Customers
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  
+
+                  <MDBNavbarItem>
+                    <MDBNavbarLink
+                      active={selectedSection === 'addAdmin'}
+                      onClick={() => handleNavigation('addAdmin')}
+                      style={{ cursor: 'pointer', fontWeight: selectedSection === 'addAdmin' ? 'bold' : 'normal' }}
+                    >
+                      Add Admin
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+
+                
+                </>
+              )}
+
+
+
+
+
+
               {user?.role === 'CUSTOMER' && (
                 <>
-                  {/* Display only relevant menu items for customers */}
                 </>
               )}
 
@@ -194,13 +221,7 @@ export default function ProfilePage() {
               </div>
 
               <MDBRow>
-                {/* {user?.role === 'ADMIN' && (
-                  <MDBCol md="6">
-                    <MDBCard className="mb-4 mb-md-0">
-                      <CustomerRewardSettings />
-                    </MDBCard>
-                  </MDBCol>
-                )} */}
+           
 
                 {user?.role === 'CUSTOMER' && (
                   <MDBCol md="6">

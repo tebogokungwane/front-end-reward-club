@@ -13,6 +13,7 @@ import AddAdmin from './AddAdmin';
 import Profile from './Profile';
 import About from './About';
 import ForgotPassword from './ForgotPassword';
+//import MyCustomers from './MyCustomers';
 import { AuthProvider, useAuth } from './AuthContext';
 
 function RewardApp() {
@@ -25,6 +26,7 @@ function RewardApp() {
             <Route path='/login' element={<Layout><Login /></Layout>} />
             <Route path='/home' element={<Layout><Home /></Layout>} />
             <Route path='/viewUsers' element={<Layout><ViewUsers /></Layout>} />
+            {/* <Route path='/MyCustomers' element={<Layout><MyCustomers /></Layout>} /> */}
             <Route path='/addUser' element={<Layout><AddUser /></Layout>} />
             <Route path='/addAdmin' element={<Layout><AddAdmin /></Layout>} />
             <Route path='/register' element={<Layout><Register /></Layout>} />

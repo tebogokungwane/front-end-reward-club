@@ -24,7 +24,10 @@ const ViewUsers = () => {
 
   const fetchUsers = () => {
     axios
-      .get('http://localhost:1991/api/v1/users')
+
+    
+
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/users`)
       .then(response => {
         console.log('Server response:', response.data);
         setUsers(response.data.content);
@@ -52,8 +55,10 @@ const ViewUsers = () => {
 
   const confirmDelete = () => {
     if (deleteItemId) {
+
       axios
-        .delete(`http://localhost:1991/api/v1/deleteCustomer/${deleteItemId}`)
+      
+        .delete(`${process.env.REACT_APP_API_URL}/api/v1/deleteCustomer/${deleteItemId}`)
         .then(() => {
           fetchUsers();
           setDeleteItemId(null);
@@ -87,7 +92,7 @@ const ViewUsers = () => {
 
   const handleUpdateSubmit = () => {
     axios
-      .put(`http://localhost:1991/api/v1/updateCustomer/${updateItem.id}`, {
+      .put(`${process.env.REACT_APP_API_URL}/api/v1/updateCustomer/${updateItem.id}`, {
         role: updateItem.role,
         active: updateItem.active
       })

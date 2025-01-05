@@ -23,8 +23,10 @@ const AdminTable = () => {
   }, [admins]);
 
   const fetchAdmins = () => {
+
     axios
-      .get('http://localhost:1991/api/v1/users')  // Replace with your API endpoint to get users
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/users`
+      )  // Replace with your API endpoint to get users
       .then(response => {
         const adminsData = response.data.content || response.data;
         // Filter only admins from the list
@@ -52,8 +54,9 @@ const AdminTable = () => {
 
   const confirmDelete = () => {
     if (deleteItemId) {
+
       axios
-        .delete(`http://localhost:1991/api/v1/deleteAdmin/${deleteItemId}`)  // Adjust endpoint if necessary
+        .delete(`${process.env.REACT_APP_API_URL}/api/v1/deleteAdmin/${deleteItemId}`) 
         .then(() => {
           fetchAdmins();
           setDeleteItemId(null);

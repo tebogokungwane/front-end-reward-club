@@ -26,7 +26,8 @@ const CustomerRewardPage = () => {
 
     console.log('Fetching profile data for user ID : ', userId);
 
-    fetch(`http://localhost:1991/api/v1/profile/${userId}`, {
+    fetch( `${process.env.REACT_APP_API_URL}/api/v1/profile/${userId}`
+      , {
       headers: {
         'Authorization': `Bearer ${token}`
       }

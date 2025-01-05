@@ -16,8 +16,11 @@ const AddAdmin = () => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const onSubmit = async (data) => {
+
+    
+
     try {
-      const response = await axios.post('http://localhost:1991/api/v1/signUpAdmin', data);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/v1/signUpAdmin`, data);
       console.log('User type:', response.data);
       setSuccessMessage('Admin registered successfully!');
       setTimeout(() => setSuccessMessage(''), 5000); // Clear the success message after 5 seconds

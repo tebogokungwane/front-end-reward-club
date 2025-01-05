@@ -11,7 +11,11 @@ function ForgotPassword() {
     setMessage(''); // Reset success message before making the request
 
     try {
-      const response = await fetch('http://localhost:1991/api/v1/forgot-password', {
+
+
+      
+
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Ensure the content type is set to JSON
